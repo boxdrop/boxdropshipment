@@ -53,8 +53,8 @@
 							if (file_exists($index_file))
 							{
 								$file_contents = file_get_contents($index_file);
-								if (strpos($file_contents, "define('_PS_ADMIN_DIR_', getcwd()") !== false)  
-								{								
+								if (strpos($file_contents, "define('_PS_ADMIN_DIR_', getcwd()") !== false)
+								{
 									$admin_dir = $absolute_element;
 									break;
 								}
@@ -62,20 +62,20 @@
 						}
 					}
 				}
-			} 
-			else 
+			}
+			else
 			{
 				list ($empty, $home, $user) = explode('/', $root_dir);
 				$admin_dir = '/home/'.$user{0}.'/'.$user{1}.'/'.$user{2}.'/'.$user.'/www/backoffice/';
 			}
 			return $admin_dir;
 		}
-		
-		
+
+
 		/**
 		 * Returns boolean wheter this installation is a PrestaShop cloud one
 		 * Wrapped in here, because for AJAX calls we have to know this PRIOR to initialize the rest of the contents
-		 * 
+		 *
 		 * @author sweber <sw@boxdrop.com>
 		 * @return boolean
 		 */
@@ -83,13 +83,13 @@
 		{
 			if (defined('_PS_HOST_MODE_'))
 				return true;
-			
+
 			$root_dir = realpath(dirname(__FILE__).'/../../../').'/';
-			
-			if (!is_readable($root_dir.'webservice/') && 
+
+			if (!is_readable($root_dir.'webservice/') &&
 			    !is_dir($root_dir.'webservice/'))
 				return true;
-				
+
 			return false;
 		}
 
@@ -278,23 +278,23 @@
 		}
 
 		/**
-		 * Returns an array out of the given string. 
-		 * Wrapped explode, to avoid creating an array with an empty value upon empty $input 
-		 * 
+		 * Returns an array out of the given string.
+		 * Wrapped explode, to avoid creating an array with an empty value upon empty $input
+		 *
 		 * @author sweber <sw@boxdrop.com>
 		 * @param  string $delimiter
 		 * @param  string $input
-		 * @return array 
+		 * @return array
 		 */
 		public static function explodeString($delimiter, $input)
 		{
-			if (empty($input)) 
+			if (empty($input))
 				return array();
-			else 
+			else
 				return explode($delimiter, $input);
 		}
 
-	
+
 	    /**
 	     * Converts user entered form numbers into float values.
 	     *
@@ -304,6 +304,6 @@
 	     */
 	    public static function convertFormNumberToFloat($number)
 		{
-			return (float)str_replace(array('.', ','), array('','.'), $return);
+			return (float)str_replace(array('.', ','), array('','.'), $number);
 		}
 	}
